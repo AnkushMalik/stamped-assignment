@@ -1,10 +1,19 @@
-import Head from 'next/head'
-import Image from 'next/image'
+import { useEffect } from 'react'
+import APIUTIL from '../utils/api_util'
 
-export default function Home() {
+const Home = () => {
+  const fetchCompanies = async() =>{
+    const apiResponse = await APIUTIL.get('/companies')
+    console.log(apiResponse) //testing apiutil
+  }
+  useEffect(()=>{
+    fetchCompanies()
+  },[])
   return (
     <div>
       Hello World
     </div>
   )
 }
+
+export default Home;
