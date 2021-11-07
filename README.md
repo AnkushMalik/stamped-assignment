@@ -60,6 +60,6 @@ Company name
 
 ### Getting started
 
-Clone the repo, it is bootstrapped with 'create-react-app', run 'yarn start' to run the project.
+Clone the repo, it is bootstrapped with 'create-next-app', run 'yarn dev' to run the project.
 
 Good luck!
