@@ -1,7 +1,21 @@
+import { useState } from 'react'
 import { Divider, Card, CardContent, CardActions, Button, Grid, Typography } from '@mui/material'
+import UpdateProject from './UpdateProject'
 
 const ProjectShowcase = (props) => {
 	const {projects, employees} = props
+	const [openUpdateProject,setOpenUpdateProject] = useState(false)
+	const [activeProject, setActiveProject] = useState({})
+
+	const handleUpdateProjectOpen = (proj) =>{
+		setActiveProject(proj)
+		setOpenUpdateProject(true)
+	}
+	
+	const handleUpdateProjectClose = () =>{
+		setOpenUpdateProject(false)
+	}
+
 	return (
 		<Grid container spacing={2}>
 			{projects?.length?
@@ -20,7 +34,7 @@ const ProjectShowcase = (props) => {
 							</CardContent>
 							<Divider/>
 							<CardActions>
-								<Button size="small">Edit</Button>
+								<Button size="small" onClick={() => handleUpdateProjectOpen(e)}>Edit</Button>
 							</CardActions>
 						</Card>
 					</Grid>
@@ -32,6 +46,11 @@ const ProjectShowcase = (props) => {
 					<p>No projects assigned to this employee</p>
 				</div>
 			}
+			<UpdateProject
+				open={openUpdateProject}
+				project = {activeProject}
+				handleClose={handleUpdateProjectClose}
+			/>
 		</Grid>
 	)
 }
