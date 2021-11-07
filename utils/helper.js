@@ -14,7 +14,7 @@ const dataFormatter = (context, jsonData) =>{
     Object.keys(hash).map(e=>{
         let temp = {}
         temp.name = e
-        temp.action = () => getJobAreaInfo(context)
+        temp.action = () => getJobAreaInfo(context, temp)
         temp.data = []
         hash[e].forEach(e => {
             temp.data.push({
@@ -40,7 +40,12 @@ export const getCompanyChildren = async(context, id) => {
     }
 }
 
-const getJobAreaInfo = context => {
+export const isIntersecting = (arr1, arr2) => {
+    return arr1.some(item => arr2.includes(item))
+}
+
+const getJobAreaInfo = (context, info) => {
+    context.set("activeJobArea", info)
     context.set("activePanel", "jobAreaInfo")
 }
 
