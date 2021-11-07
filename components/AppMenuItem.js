@@ -39,6 +39,8 @@ const AppMenuItem = (props) => {
             <Divider />
             <List component="div" disablePadding>
                 {props.menuChildren?.length && props.menuChildren?.map((e, idx) =>
+                    // since we are using multi level nested menu,
+                    // recursive rendering for component reuse, 
                     <AppMenuItem
                         key={idx}
                         item={e}

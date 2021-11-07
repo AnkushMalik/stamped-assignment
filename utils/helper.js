@@ -2,6 +2,7 @@ import APIUTIL from './api_util'
 import NProgress from 'nprogress'
 
 const dataFormatter = (context, jsonData) =>{
+    // formatting data for using it in multi level nested navigation
     let hash = {}
     jsonData.map(e=>{
         if(hash[e.jobArea]==undefined){

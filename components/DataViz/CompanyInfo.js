@@ -16,6 +16,10 @@ const CompanyInfo = () => {
 
 	
 	return (
+		// When the user clicks on a company, the app should display the company's address 
+		// and the company's projects. It should be possible to visualize the 
+		// information about each project. If you feel that this is too easy, add the 
+		// ability to edit project details (changing the project name) and assigning & removing employees from a project.
 		<Container>
             <h2>Company Info:</h2>
 			<Divider/>

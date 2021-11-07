@@ -42,9 +42,9 @@ const UpdateProject = (props) => {
             projectName: projectName,
             employees: emp_ids
         }
-        const apiResponse = await APIUTIL.put(`/projects/update_project`,payload)
+        const apiResponse = await APIUTIL.put(`/projects/update_project`,payload) // update projects info
         if(apiResponse){
-            fetchProjects(context)
+            fetchProjects(context) // if successful update, refetch projects to render new changes
         }
         handleClose()
     }

@@ -17,6 +17,9 @@ const JobAreaInfo = () => {
 	},[])
 
 	return (
+		// Clicking on Employee's job area should only display 
+		// how many employees work in that area, and 
+		// the number of projects they participate in.
 		<Container>
 			<h2>Job Area Info: </h2>
 			<Divider/>
@@ -24,6 +27,7 @@ const JobAreaInfo = () => {
 			<p><strong>No. of employees in this Area: </strong> {areaEmployeesId.length}</p>
 			<p><strong>No. of participated projects: </strong>
 			{
+				//find all projects whose employeesId contains, jobArea employee's ids.
 				companyProjects?.filter(proj=> isIntersecting(proj.employeesId,areaEmployeesId))
 					.length
 			}

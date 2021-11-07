@@ -13,7 +13,7 @@ const EmployeeInfo = () => {
 	useEffect(()=>{
 		let projects = companyProjects?.filter(p=> p.employeesId.indexOf(employee.id)>-1)
 		setAssignedProjects(projects)
-	},[])
+	},[companyProjects])
 
 	return (
 		// When the user clicks on an employee's name 

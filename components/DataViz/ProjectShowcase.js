@@ -27,6 +27,8 @@ const ProjectShowcase = (props) => {
 									{e.name}
 								</Typography>
 								{
+									// filtering employees of a company so that we can show 
+									// elevant employees name in their respective project card
 									employees.filter(emp =>
 										e.employeesId?.indexOf(emp.id)>-1
 									).map((emp,index)=><p key={index}>{emp.firstName} {emp.lastName}</p>)
