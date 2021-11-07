@@ -36,6 +36,7 @@ export const getCompanyChildren = async(context, id) => {
         let payload = dataFormatter(context, apiResponse)
         context.set("companyChildren", payload)
         context.set("activePanel", "companyInfo")
+        context.set("activeCompanyEmployees",apiResponse)
     }
 }
 

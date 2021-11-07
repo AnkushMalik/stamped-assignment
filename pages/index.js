@@ -1,5 +1,4 @@
 import { useEffect, useContext } from 'react'
-import Link from 'next/link'
 
 import APIUTIL from '../utils/api_util'
 import { Context } from '../utils/useGlobalState'
@@ -14,7 +13,7 @@ const DataViz = () => {
 
 	useEffect(()=>{
 		fetchCompanies()
-	})
+	},[])
 
 	const fetchCompanies = async() =>{
 		const apiResponse = await APIUTIL.get('/companies')
