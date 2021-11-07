@@ -25,11 +25,8 @@ const jsonFetch = async (url, additonalOptions = {}, additionalHeaders = null) =
 		const response = await unfetch(apiUrl, options)
 
 		const jsonResponse = await response.json()
-		if (jsonResponse && jsonResponse.success) {
-			return jsonResponse
-		} else {
-			return jsonResponse
-		}
+		
+		return jsonResponse
 	} catch (error) {
 		return error
 	}
