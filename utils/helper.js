@@ -19,7 +19,7 @@ const dataFormatter = (context, jsonData) =>{
         hash[e].forEach(e => {
             temp.data.push({
                 name: `${e.firstName} ${e.lastName}`,
-                action: () => getEmployeeInfo(context),
+                action: () => getEmployeeInfo(context, e),
                 ...e
             })
         });
@@ -49,6 +49,7 @@ const getJobAreaInfo = (context, info) => {
     context.set("activePanel", "jobAreaInfo")
 }
 
-const getEmployeeInfo = context => {
+const getEmployeeInfo = (context, info) => {
+    context.set("activeEmployee", info)
     context.set("activePanel", "employeeInfo")
 }
