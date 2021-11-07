@@ -3,10 +3,14 @@ import Link from 'next/link'
 
 import APIUTIL from '../utils/api_util'
 import { Context } from '../utils/useGlobalState'
-import { Grid, Card, CardContent } from '@mui/material'
+import { Grid } from '@mui/material'               
+import CompanyInfo from "../components/DataViz/CompanyInfo"
+import EmployeeInfo from "../components/DataViz/EmployeeInfo"
+import JobAreaInfo from "../components/DataViz/JobAreaInfo"
 
-const CompanyIndex = () => {
+const DataViz = () => {
 	const context = useContext(Context)
+	const panelState = context?.activePanel
 
 	useEffect(()=>{
 		fetchCompanies()
@@ -21,21 +25,20 @@ const CompanyIndex = () => {
 	
 	return (
 		<div className="company-index">
-			<Grid container spacing={2} className="company-index-container">
-				{context?.companies?.map(e=>
-					<Grid item xs={3} key={e._id} className="company-index-items">
-						<Link href={`/companies/${e.id}`} passHref>
-							<Card>
-								<CardContent>
-									{e.name}
-								</CardContent>
-							</Card>
-						</Link>
-					</Grid>
-				)}
+			<Grid container spacing={2} py={6} px={8} className="company-index-container">
+				{
+					(() => {
+						if (panelState === 'employeeInfo')
+							return <EmployeeInfo/>
+						if (panelState === 'jobAreaInfo')
+							return <JobAreaInfo/>
+						else if(panelState === 'companyInfo')
+							return <CompanyInfo/>
+					})()
+				}
 			</Grid>
 		</div>
 	)
 }
 
-export default CompanyIndex;
+export default DataViz;

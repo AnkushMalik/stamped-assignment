@@ -17,7 +17,7 @@ const AppMenuItem = (props) => {
 
     const handleClick = () =>{
         setOpen(!open)
-        props.menuClickHandler(props?.item?.id)
+        props.menuClickHandler(context, props?.item?.id)
     }
 
     const MenuItemRoot = (
@@ -51,8 +51,8 @@ const AppMenuItem = (props) => {
         </Collapse>
     return (
         <>
-          {MenuItemRoot}
-          {MenuItemChildren}
+            {MenuItemRoot}
+            {MenuItemChildren}
         </>
     )
 }
