@@ -1,17 +1,34 @@
+@import "./nprogress.scss";
+
 * {
-  box-sizing: border-box;
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
+	box-sizing: border-box;
+	a {
+		color: inherit;
+		text-decoration: none;
+	}
 }
 
 html,
 body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+	padding: 0;
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+	Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
-@import "./nprogress.scss"
+body{
+	.layout-container{
+		.app-menu{
+			&>.app-menu-item{
+				border-bottom: 2px solid;
+			}
+		}
+		.project-update-dialog{
+			.MuiDialog-container{
+				.MuiDialog-paper{
+					min-width: 90%;
+				}
+			}
+		}
+	}
+}

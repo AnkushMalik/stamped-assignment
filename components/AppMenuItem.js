@@ -1,5 +1,5 @@
 import { useEffect,useContext, useState } from 'react'
-import { ListItemButton, ListItemText, ListItem, Collapse, Divider, List} from '@mui/material';
+import { ListItemText, ListItem, Collapse, Divider, List} from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 
@@ -25,7 +25,7 @@ const AppMenuItem = (props) => {
             <ListItemText primary={props.name}/>
             {/* Display the expand menu if the item has children */}
             {
-                props.menuChildren?.length > 0 ? (
+                props.menuChildren ? (
                     <>
                         {!open && <ExpandMoreIcon />}
                         {open && <ExpandLessIcon />}
@@ -50,10 +50,10 @@ const AppMenuItem = (props) => {
             </List>
         </Collapse>
     return (
-        <>
+        <div className="app-menu-item">
             {MenuItemRoot}
             {MenuItemChildren}
-        </>
+        </div>
     )
 }
 export default AppMenuItem

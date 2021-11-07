@@ -2,7 +2,7 @@ import { useContext, useEffect } from "react"
 import { Container, Divider } from '@mui/material'
 
 import { Context } from '../../utils/useGlobalState'
-import APIUTIL from '../../utils/api_util'
+import { fetchProjects } from '../../utils/helper'
 import ProjectShowcase from "./ProjectShowcase"
 
 const CompanyInfo = () => {
@@ -11,16 +11,10 @@ const CompanyInfo = () => {
 	const employees = context?.activeCompanyEmployees || null
 
 	useEffect(()=>{
-		fetchProjects()
+		fetchProjects(context)
 	},[context.activeCompany])
 
-	const fetchProjects = async() =>{
-		if(!company) return
-		const apiResponse = await APIUTIL.get(`/projects/${company?.id}`)
-		if (apiResponse){
-			context.set('projects',apiResponse)
-		}
-	}
+	
 	return (
 		<Container>
             <h2>Company Info:</h2>

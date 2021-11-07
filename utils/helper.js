@@ -1,4 +1,5 @@
 import APIUTIL from './api_util'
+import NProgress from 'nprogress'
 
 const dataFormatter = (context, jsonData) =>{
     let hash = {}
@@ -29,6 +30,7 @@ const dataFormatter = (context, jsonData) =>{
 }
 
 export const getCompanyChildren = async(context, id) => {
+    NProgress.start()
     let activeCompany = context?.companies?.filter(e=>e.id===id)[0]
     context.set("activeCompany",activeCompany)
     const apiResponse = await APIUTIL.get(`/employee/by_company/${id}`)
@@ -38,6 +40,7 @@ export const getCompanyChildren = async(context, id) => {
         context.set("activePanel", "companyInfo")
         context.set("activeCompanyEmployees",apiResponse)
     }
+    NProgress.done()
 }
 
 export const isIntersecting = (arr1, arr2) => {
@@ -52,4 +55,13 @@ const getJobAreaInfo = (context, info) => {
 const getEmployeeInfo = (context, info) => {
     context.set("activeEmployee", info)
     context.set("activePanel", "employeeInfo")
+}
+
+export const fetchProjects = async(context) =>{
+    NProgress.start()
+    const apiResponse = await APIUTIL.get(`/projects/${context?.activeCompany?.id}`)
+    if (apiResponse){
+        context.set('projects',apiResponse)
+    }
+    NProgress.done()
 }

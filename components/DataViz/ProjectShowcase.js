@@ -29,7 +29,7 @@ const ProjectShowcase = (props) => {
 								{
 									employees.filter(emp =>
 										e.employeesId?.indexOf(emp.id)>-1
-									).map((emp,index)=><p key={index}>{emp.firstName}</p>)
+									).map((emp,index)=><p key={index}>{emp.firstName} {emp.lastName}</p>)
 								}
 							</CardContent>
 							<Divider/>

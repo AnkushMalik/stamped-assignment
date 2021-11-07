@@ -14,6 +14,7 @@ import {
 } from '@mui/material'
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
+import { fetchProjects } from '../../utils/helper'
 
 const icon = <CheckBoxOutlineBlankIcon fontSize="small" />
 const checkedIcon = <CheckBoxIcon fontSize="small" /> 
@@ -42,16 +43,20 @@ const UpdateProject = (props) => {
             employees: emp_ids
         }
         const apiResponse = await APIUTIL.put(`/projects/update_project`,payload)
-        // if(apiResponse){
-
-        // }
+        if(apiResponse){
+            fetchProjects(context)
+        }
         handleClose()
-        // const apiResponse = APIUTIl
     }
 
     return(
         <div>
-            <Dialog open={open} onClose={handleClose}>
+            <Dialog
+                open={open}
+                onClose={handleClose}
+                fullWidth={true}
+                maxWidth="md"
+            >
                 <DialogTitle>{project?.name}</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
